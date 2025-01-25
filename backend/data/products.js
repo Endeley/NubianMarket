@@ -6,7 +6,7 @@ const products = [
         brand: 'SoundWave',
         category: 'Electronics',
         price: 99.99,
-        countInStock:8,
+        countInStock: 8,
         numReviews: 312,
         rating: 4.5,
         image: '/images/airpods.jpg',
@@ -177,7 +177,7 @@ const products = [
         price: 39.99,
         countInStock: 35,
         rating: 2.5,
-        numReviews: 145,
+        numReviews: 105,
         image: '/images/icontroller.jpg',
     },
 ];

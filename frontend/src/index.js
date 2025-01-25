@@ -6,6 +6,7 @@ import './assets/styles/custom.style.css';
 import './assets/styles/style.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ProductDetailsPage from './pages/ProductDetailsPage';
 import HomePage from './pages/HomePage';
 
 //
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<App />}>
             <Route index={true} path='/' element={<HomePage />} />
+            <Route path='/product/:id' element={<ProductDetailsPage />} />
         </Route>
     )
 );
