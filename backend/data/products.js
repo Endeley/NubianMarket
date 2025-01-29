@@ -1,6 +1,5 @@
 const products = [
     {
-        id: 1,
         name: 'Wireless Bluetooth Headphones',
         description: 'Noise-canceling over-ear headphones with 40 hours of battery life.',
         brand: 'SoundWave',
@@ -12,7 +11,6 @@ const products = [
         image: '/images/airpods.jpg',
     },
     {
-        id: 2,
         name: 'Smartphone 5G',
         description: 'Latest smartphone with 5G capability, 128GB storage, and 8GB RAM.',
         brand: 'TechPro',
@@ -24,7 +22,6 @@ const products = [
         image: '/images/phone.jpg',
     },
     {
-        id: 3,
         name: 'Gaming Laptop',
         description: 'High-performance gaming laptop with RTX 3060 GPU and 16GB RAM.',
         brand: 'GameMaster',
@@ -36,7 +33,6 @@ const products = [
         image: '/images/laptop.jpg',
     },
     {
-        id: 4,
         name: 'Amazon Alexa',
         description: 'Smart Home Amazon Alexa with bluetooth and weather compatible.',
         brand: 'VisionPlus',
@@ -48,7 +44,6 @@ const products = [
         image: '/images/alexa.jpg',
     },
     {
-        id: 5,
         name: 'Ispec Eye Glass',
         description: 'Lightweight smart modern high tech Glasses.',
         brand: 'Speedster',
@@ -56,12 +51,10 @@ const products = [
         price: 59.99,
         countInStock: 100,
         rating: 3,
-
         numReviews: 412,
         image: '/images/ispec.jpg',
     },
     {
-        id: 6,
         name: 'Sound bar',
         description: 'Home theatra , home sound bar.',
         brand: 'DentalCare',
@@ -73,7 +66,6 @@ const products = [
         image: '/images/soundbar.jpg',
     },
     {
-        id: 7,
         name: 'Smart Mouse',
         description: 'modern Egonomic Mouse for every offices and Gamers.',
         brand: 'WristTech',
@@ -85,7 +77,6 @@ const products = [
         image: '/images/mouse.jpg',
     },
     {
-        id: 8,
         name: 'iRobot',
         description: 'High-speed Smart iRobot.',
         brand: 'KitchenPro',
@@ -97,7 +88,6 @@ const products = [
         image: '/images/irobot.jpg',
     },
     {
-        id: 9,
         name: 'Digital Camera',
         description: 'Compact camera with 20MP resolution and 4K video recording.',
         brand: 'PhotoSnap',
@@ -109,7 +99,6 @@ const products = [
         image: '/images/camera.jpg',
     },
     {
-        id: 10,
         name: 'Play Station (5)',
         description: 'Play station 5 with ulta hk hd display for serious Gamers.',
         brand: 'ZenGear',
@@ -121,7 +110,6 @@ const products = [
         image: '/images/playstation.jpg',
     },
     {
-        id: 11,
         name: 'Wireless Bluetooth Watch',
         description: 'Ergonomic wireless BlueTooth with adjustable DPI settings.',
         brand: 'ClickPro',
@@ -133,7 +121,6 @@ const products = [
         image: '/images/btw.jpg',
     },
     {
-        id: 12,
         name: 'Smart Speaker ',
         description: 'Smart Speaker portable and powerful, with rich sound ',
         brand: 'ChargeIt',
@@ -145,7 +132,6 @@ const products = [
         image: '/images/bluetoothspeaker.jpg',
     },
     {
-        id: 13,
         name: 'VR ',
         description: 'Virtual Reality with Comfortable ergonomic headset.',
         brand: 'OfficePlus',
@@ -157,7 +143,6 @@ const products = [
         image: '/images/vitualHD.jpg',
     },
     {
-        id: 14,
         name: 'Thermo',
         description: 'insulated portable thermo.',
         brand: 'AdventureCam',
@@ -169,7 +154,6 @@ const products = [
         image: '/images/thermo.jpg',
     },
     {
-        id: 15,
         name: 'iController',
         description: 'Portable iGaming with controller, Nintendo style.',
         brand: 'BrewMaster',
