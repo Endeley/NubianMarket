@@ -1,36 +1,22 @@
-import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import axios from 'axios';
+import { useGetProductDetailsQuery } from '../slices/productApiSlice';
 import { Row, Col, Image, ListGroup, Button } from 'react-bootstrap';
 import Rating from '../components/Rating'; // Assuming Rating is a separate component
 
 const ProductDetailsPage = () => {
     const { _id: productId } = useParams();
-    const [product, setProduct] = useState({});
-
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const { data } = await axios.get(`/api/products/${productId}`);
-                console.log(data);
-
-                setProduct(data);
-            } catch (error) {
-                console.error('Error fetching product:', error.message);
-            }
-        };
-
-        if (productId) {
-            fetchProduct();
-        }
-    }, [productId]);
+    const { data: product, isLoading, error } = useGetProductDetailsQuery(productId);
 
     return (
         <>
             <Link className='btn btn-light my-3' to='/'>
                 Go Back
             </Link>
-            {product && (
+            {isLoading ? (
+                <h3>Loading...</h3>
+            ) : error ? (
+                <div>{error?.data?.message || error.err}</div>
+            ) : (
                 <Row>
                     <Col md={5}>
                         <Image src={product.image} alt={product.name} fluid />
