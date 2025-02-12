@@ -10,6 +10,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ProductDetailsPage from './pages/ProductDetailsPage';
 import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import ShippingPage from './pages/ShippingPage';
 
 //
 const router = createBrowserRouter(
@@ -17,6 +21,10 @@ const router = createBrowserRouter(
         <Route path='/' element={<App />}>
             <Route index={true} path='/' element={<HomePage />} />
             <Route path='/product/:_id' element={<ProductDetailsPage />} />
+            <Route path='/cart' element={<CartPage />} />
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/shipping' element={<ShippingPage />} />
         </Route>
     )
 );
