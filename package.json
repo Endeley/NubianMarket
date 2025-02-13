@@ -27,9 +27,11 @@
         "mongoose": "^8.9.5"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@types/jsonwebtoken": "^9.0.8",
         "concurrently": "^9.1.2",
         "dotenv": "^16.4.7",
-        "nodemon": "^3.1.9"
+        "nodemon": "^3.1.9",
+        "webpack-dev-server": "^5.2.0"
     }
 }
