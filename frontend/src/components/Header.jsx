@@ -21,6 +21,15 @@ const Header = () => {
     const goToLogIn = () => {
         navigate('/login');
     };
+    const goToProductList = () => {
+        navigate('/admin/productlist');
+    };
+    const goToUserList = () => {
+        navigate('/admin/userlist');
+    };
+    const goToAdminOrderList = () => {
+        navigate('/admin/orderlist');
+    };
 
     const logoutHandler = async () => {
         try {
@@ -62,6 +71,19 @@ const Header = () => {
                                     <FaUser />
                                     Sign In
                                 </Nav.Link>
+                            )}
+                            {userInfo && userInfo.isAdmin && (
+                                <NavDropdown title='Admin' id='adminmenu'>
+                                    <Nav.Link onClick={goToProductList}>
+                                        <NavDropdown.Item>Products</NavDropdown.Item>
+                                    </Nav.Link>
+                                    <Nav.Link onClick={goToUserList}>
+                                        <NavDropdown.Item>Users</NavDropdown.Item>
+                                    </Nav.Link>
+                                    <Nav.Link onClick={goToAdminOrderList}>
+                                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    </Nav.Link>
+                                </NavDropdown>
                             )}
                         </Nav>
                     </Navbar.Collapse>
