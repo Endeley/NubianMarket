@@ -21,13 +21,14 @@ const OrderPage = () => {
     useEffect(() => {
         if (!errorPayPal && !loadingPayPal && paypal.clientId) {
             const loadPayPalScript = async () => {
-                paypalDispatch({
-                    type: 'resetOptions',
-                    value: {
-                        'client-id': paypal.clientId,
-                        currency: 'EUR',
-                    },
-                });
+                // paypalDispatch({
+                //     type: 'resetOptions',
+                //     value: {
+                //         'client-id': paypal.clientId,
+                //         currency: 'EUR',
+                //     },
+                // });
+                paypalDispatch({ value: { currency: order.currency || 'USD' } });
                 paypalDispatch({ type: 'setLoadingStatus', value: 'pending' });
             };
             if (order && !order.isPaid) {

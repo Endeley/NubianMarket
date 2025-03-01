@@ -8,48 +8,63 @@ import Product from './models/productModel.js';
 import Order from './models/orderModel.js';
 import connectDB from './config/db.js';
 
+// Load environment variables
 dotenv.config();
+
+// Connect to MongoDB
 connectDB();
-
+ 
 const importData = async () => {
-    console.log(Order);
-
     try {
+        console.log('🔄 Clearing existing data...'.yellow);
+
         await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
 
-        const createdUsers = await User.insertMany(users);
+        console.log('✅ Existing data cleared.'.green);
 
+        // Insert users and get admin user ID
+        const createdUsers = await User.insertMany(users);
         const adminUser = createdUsers[0]._id;
 
-        const sampleProducts = products.map((product) => {
-            return { ...product, user: adminUser };
-        });
+        // Assign admin user to products
+        const sampleProducts = products.map((product) => ({
+            ...product,
+            user: adminUser,
+        }));
+
         await Product.insertMany(sampleProducts);
 
-        console.log('Data Imported!'.green.inverse);
-        process.exit();
+        console.log('✅ Data successfully imported!'.green.inverse);
+
+        await mongoose.connection.close();
+        process.exit(0);
     } catch (error) {
-        console.error(`${error}`.red.inverse);
+        console.error(`❌ Error: ${error.message}`.red.inverse);
         process.exit(1);
     }
 };
 
 const destroyData = async () => {
     try {
+        console.log('🗑️ Destroying all data...'.yellow);
+
         await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
 
-        console.log('Data Destroyed'.red.inverse);
-        process.exit();
+        console.log('✅ Data successfully destroyed!'.red.inverse);
+
+        await mongoose.connection.close();
+        process.exit(0);
     } catch (error) {
-        console.error(`${error}`.red.inverse);
+        console.error(`❌ Error: ${error.message}`.red.inverse);
         process.exit(1);
     }
 };
 
+// Run script based on argument
 if (process.argv[2] === '-d') {
     destroyData();
 } else {

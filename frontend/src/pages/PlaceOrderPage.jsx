@@ -13,7 +13,7 @@ const PlaceOrderPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
-    const [createOrder, { isLording, error }] = useCreateOrderMutation();
+    const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
     //
     useEffect(() => {
@@ -35,7 +35,7 @@ const PlaceOrderPage = () => {
                 taxPrice: cart.taxPrice,
                 totalPrice: cart.totalPrice,
             }).unwrap();
-            dispatch(clearCartItems);
+            dispatch(clearCartItems());
             navigate(`/order/${res._id}`);
         } catch (error) {
             toast.error(error);
@@ -122,7 +122,7 @@ const PlaceOrderPage = () => {
                                 <Button type='button' className='btn-block' disabled={cart.cartItems.length === 0} onClick={placeOrderHandler}>
                                     Place Order
                                 </Button>
-                                {isLording && <Loader />}
+                                {isLoading && <Loader />}
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
