@@ -4,16 +4,19 @@ import { apiSlice } from './apiSlice';
 export const productsApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: () => ({
+            query: ({ keyword = '', pageNumber = 1 } = {}) => ({
                 url: PRODUCTS_URL,
+                params: { keyword, pageNumber: isNaN(pageNumber) ? 1 : pageNumber },
             }),
             providesTags: ['Products'],
             keepUnusedDataFor: 5,
         }),
+
         getProductDetails: builder.query({
             query: (productId) => ({
                 url: `${PRODUCTS_URL}/${productId}`,
             }),
+            providesTags: ['Product'],
             keepUnusedDataFor: 5,
         }),
         createProduct: builder.mutation({
@@ -21,9 +24,8 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: PRODUCTS_URL,
                 method: 'POST',
             }),
-            invalidatesTags: ['Product'],
+            invalidatesTags: ['Products'], // Fix: ensure product list updates
         }),
-
         updateProduct: builder.mutation({
             query: (data) => ({
                 url: `${PRODUCTS_URL}/${data.productId}`,
@@ -38,14 +40,24 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: data,
             }),
+            invalidatesTags: ['Product'], // Fix: Ensure image updates in cache
         }),
         deleteProduct: builder.mutation({
             query: (productId) => ({
                 url: `${PRODUCTS_URL}/${productId}`,
                 method: 'DELETE',
             }),
+            invalidatesTags: ['Products'], // Fix: Ensure deleted product is removed
+        }),
+        createReview: builder.mutation({
+            query: (data) => ({
+                url: `${PRODUCTS_URL}/${data.productId}/reviews`,
+                method: 'POST',
+                body: data,
+            }),
+            invalidatesTags: ['Product'],
         }),
     }),
 });
 
-export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation } = productsApiSlice;
+export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation } = productsApiSlice;

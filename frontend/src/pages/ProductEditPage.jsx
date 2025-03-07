@@ -73,6 +73,7 @@ const ProductEditPage = () => {
             const res = await uploadProductImage(formData).unwrap();
             toast.success(res.message);
             setImage(res.image);
+            refetch();
         } catch (error) {
             console.error('Upload Error:', error);
             toast.error(error?.data?.message || error.error);
@@ -87,6 +88,7 @@ const ProductEditPage = () => {
             </Link>
             <FormContainer>
                 <h1 className='text-center'>Edit Product</h1>
+                {loadingUpload && <Loader />}
                 {loadingUpdate && <Loader />}
                 {isLoading ? (
                     <Loader />
