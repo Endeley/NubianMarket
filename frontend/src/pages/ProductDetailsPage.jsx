@@ -4,10 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productApiSlice';
 import { Row, Col, Image, ListGroup, Button, Form } from 'react-bootstrap';
 import Rating from '../components/Rating'; // Assuming Rating is a separate component
+
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { addToCart } from '../slices/cartSlice';
+import Meta from '../components/Meta';
 
 const ProductDetailsPage = () => {
     const dispatch = useDispatch();
@@ -65,6 +67,7 @@ const ProductDetailsPage = () => {
                 <Message variant='danger'>{error?.data?.message || error.err}</Message>
             ) : (
                 <>
+                    <Meta title={product.name} />
                     <Row>
                         <Col md={5}>
                             <Image src={product.image} alt={product.name} fluid />

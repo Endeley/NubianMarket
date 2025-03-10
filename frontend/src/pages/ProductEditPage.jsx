@@ -88,7 +88,7 @@ const ProductEditPage = () => {
             </Link>
             <FormContainer>
                 <h1 className='text-center'>Edit Product</h1>
-                {loadingUpload && <Loader />}
+
                 {loadingUpdate && <Loader />}
                 {isLoading ? (
                     <Loader />
@@ -111,7 +111,7 @@ const ProductEditPage = () => {
                             <Form.Control type='text' placeholder='Enter Image Url' value={image} onChange={(e) => setImage(e.target.value)}></Form.Control>
                             <Form.Control type='file' label='Choose a    file' onChange={uploadFileHandler}></Form.Control>
                         </Form.Group>
-
+                        {loadingUpload && <Loader />}
                         <Form.Group controlId='brand' className='my-2'>
                             <Form.Label>Brand</Form.Label>
                             <Form.Control type='text' placeholder='Enter brand' value={brand} onChange={(e) => setBrand(e.target.value)}></Form.Control>
